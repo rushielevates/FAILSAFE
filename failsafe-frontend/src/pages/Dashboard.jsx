@@ -8,7 +8,7 @@ function Dashboard({ user, onLogout }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const API_URL = 'http://localhost:8000/api'
+  const API_URL = 'https://failsafe-api.onrender.com/api'
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0])
