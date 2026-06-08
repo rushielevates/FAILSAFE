@@ -1,0 +1,25 @@
+Failsafe_project_coding_club/
+│
+├── failsafe-backend/          (Already built ✅)
+│   ├── main.py
+│   ├── models/
+│   ├── utils/
+│   └── routes/
+│
+└── failsafe-frontend/         (We'll build now 🆕)
+
+src/
+├── pages/
+│   ├── Dashboard.jsx      ← Full dashboard page
+│   └── LoginPage.jsx      ← Full login page
+│
+├── components/
+│   ├── UploadCSV.jsx      ← Upload box component
+│   ├── StudentCard.jsx    ← Individual student card
+│   └── RiskChart.jsx      ← Chart component
+│
+└── App.jsx
+
+failsafe_env\Scripts\activate
+uvicorn main:app --reload
+npm run dev -- for frontend
