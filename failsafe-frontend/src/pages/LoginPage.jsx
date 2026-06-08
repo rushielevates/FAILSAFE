@@ -12,7 +12,7 @@ function LoginPage({ onLogin }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
-  const API_URL = 'https://failsafe-api.onrender.com/auth'
+  const API_URL = 'https://failsafe-api-wvs6.onrender.com/auth'
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
