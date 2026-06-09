@@ -29,15 +29,19 @@ function LoginPage({ onLogin }) {
         setIsSignup(false)
         alert('Account created! Please login.')
       } else {
+        console.log('Sending request to:', `${API_URL}/login`)
         const response = await axios.post(`${API_URL}/login`, {
           email: form.email,
           password: form.password
         })
+        console.log('Response:', response.data)
         localStorage.setItem('token', response.data.access_token)
         localStorage.setItem('user', JSON.stringify(response.data.user))
         onLogin(response.data.user)
       }
     } catch (err) {
+      console.log('Error object:', err)
+      console.log('Error response:', err.response)
       setError(err.response?.data?.detail || 'Something went wrong')
     } finally {
       setLoading(false)
