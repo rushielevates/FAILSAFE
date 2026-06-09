@@ -120,18 +120,21 @@ function Dashboard({ user, onLogout }) {
               </p>
               
               {/* Risk Factors */}
-              {student.risk_factors.length > 0 && (
+               {student.risk_factors.length > 0 && (
                 <div>
                   <p style={styles.factorsTitle}>Top Factors:</p>
-                  {student.risk_factors.map((factor, idx) => (
-                    <span key={idx} style={{
-                      ...styles.factorTag,
-                      backgroundColor: factor.direction === 'risk' ? '#fde8e8' : '#e8f8e8',
-                      color: factor.direction === 'risk' ? '#c0392b' : '#27ae60'
-                    }}>
-                      {factor.direction === 'risk' ? '🔴' : '🟢'} {factor.feature}
-                    </span>
-                  ))}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {student.risk_factors.map((factor, idx) => (
+                      <span key={idx} style={{
+                        ...styles.factorTag,
+                        backgroundColor: factor.direction === 'risk' ? '#fde8e8' : '#e8f8e8',
+                        color: factor.direction === 'risk' ? '#c0392b' : '#27ae60',
+                        border: factor.direction === 'risk' ? '1px solid #f5c6cb' : '1px solid #c3e6cb'
+                      }}>
+                        {factor.direction === 'risk' ? '🔴' : '🟢'} {factor.feature}: {factor.impact > 0 ? '+' : ''}{factor.impact.toFixed(1)}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
               
