@@ -124,7 +124,7 @@ Each plan includes: **Action → Detail → Priority → Timeline**
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
