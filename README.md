@@ -6,13 +6,13 @@
 
 ## 🎯 Problem Statement
 
-In educational institutions, student failure often goes undetected until end-of-semester results, leaving no room for meaningful intervention. Faculty lack a proactive, data-driven tool to identify at-risk students early and understand the root causes behind their struggles.
+In educational institutions, student failure often goes undetected until end-of-semester results, leaving no room for meaningful intervention. Faculty lack a proactive, data-driven tool to identify at-risk students early.
 
 ---
 
 ## 💡 Solution
 
-FAILSAFE is a web-based system where faculty upload student data and a trained ML model predicts failure risk — with **Explainable AI (SHAP)** making every prediction transparent — and **auto-generates personalised intervention plans** to help faculty act before it's too late.
+FAILSAFE is a web-based system where faculty upload student data and a trained ML model predicts failure risk — with **Explainable AI (SHAP)** making every prediction transparent — and **auto-generated intervention plans** guiding support.
 
 ---
 
@@ -41,12 +41,12 @@ FAILSAFE is a web-based system where faculty upload student data and a trained M
 | **Demographics** | age, sex, address, famsize, school |
 
 ### Model Architecture
+```
 XGBoost Classifier + SMOTEENN (Handling Imbalance)
 ├── SMOTE: Synthetic Minority Oversampling
 ├── ENN: Edited Nearest Neighbors (noise removal)
 └── Threshold Tuning: Optimal F2-score threshold
-
-text
+```
 
 ### Performance
 | Metric | Score |
@@ -98,33 +98,34 @@ Each plan includes: **Action → Detail → Priority → Timeline**
 
 ## 🏗️ Architecture
 
+```
 ┌─────────────────────────────────────────────────────────┐
-│ React Frontend (Vercel) │
-│ ┌──────────┐ ┌──────────┐ ┌───────────────────────┐ │
-│ │ Upload │ │Dashboard │ │ Intervention Tracker │ │
-│ │ Module │ │ & Charts │ │ │ │
-│ └──────────┘ └──────────┘ └───────────────────────┘ │
+│         React Frontend (Vercel)                         │
+│ ┌──────────┐ ┌──────────┐ ┌───────────────────────┐   │
+│ │ Upload   │ │Dashboard │ │ Intervention Tracker  │   │
+│ │ Module   │ │ & Charts │ │                       │   │
+│ └──────────┘ └──────────┘ └───────────────────────┘   │
 └─────────────────────┬───────────────────────────────────┘
-│ REST API
+                      │ REST API
 ┌─────────────────────┴───────────────────────────────────┐
-│ FastAPI Backend (Render) │
-│ ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
-│ │ Auth │ │ ML Model │ │ Intervention │ │
-│ │ Service │ │ Service │ │ Generator │ │
-│ └──────────┘ └──────────┘ └──────────────────────┘ │
+│       FastAPI Backend (Render)                          │
+│ ┌──────────┐ ┌──────────┐ ┌──────────────────────┐    │
+│ │ Auth     │ │ ML Model │ │ Intervention         │    │
+│ │ Service  │ │ Service  │ │ Generator            │    │
+│ └──────────┘ └──────────┘ └──────────────────────┘    │
 └─────────────────────┬───────────────────────────────────┘
-│
+                      │
 ┌─────────────────────┴───────────────────────────────────┐
-│ PostgreSQL (Supabase Cloud) │
-│ ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
-│ │ Users │ │Predictions│ │ Students │ │
-│ └──────────┘ └──────────┘ └──────────────────────┘ │
+│    PostgreSQL (Supabase Cloud)                          │
+│ ┌──────────┐ ┌──────────┐ ┌──────────────────────┐    │
+│ │ Users    │ │Predictions│ │ Students            │    │
+│ └──────────┘ └──────────┘ └──────────────────────┘    │
 └─────────────────────────────────────────────────────────┘
-
+```
 
 ---
 
-### 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -138,40 +139,42 @@ Each plan includes: **Action → Detail → Priority → Timeline**
 ---
 
 ## 📁 Project Structure
+
+```
 FAILSAFE/
 ├── failsafe-backend/
-│ ├── main.py # FastAPI entry point
-│ ├── requirements.txt # Python dependencies
-│ ├── runtime.txt # Python version for Render
-│ ├── models/ # Trained model files
-│ ├── utils/
-│ │ ├── model_loader.py # Load model & pipeline
-│ │ ├── preprocessing.py # Data preprocessing
-│ │ ├── pipeline.py # CompletePipeline class
-│ │ ├── intervention.py # Intervention generator
-│ │ └── auth.py # JWT authentication
-│ ├── routes/
-│ │ ├── predict.py # Prediction endpoints
-│ │ └── auth.py # Login/signup endpoints
-│ └── database/
-│ ├── connection.py # Supabase connection
-│ └── models.py # Database tables
+│   ├── main.py                          # FastAPI entry point
+│   ├── requirements.txt                 # Python dependencies
+│   ├── runtime.txt                      # Python version for Render
+│   ├── models/                          # Trained model files
+│   ├── utils/
+│   │   ├── model_loader.py             # Load model & pipeline
+│   │   ├── preprocessing.py            # Data preprocessing
+│   │   ├── pipeline.py                 # CompletePipeline class
+│   │   ├── intervention.py             # Intervention generator
+│   │   └── auth.py                     # JWT authentication
+│   ├── routes/
+│   │   ├── predict.py                  # Prediction endpoints
+│   │   └── auth.py                     # Login/signup endpoints
+│   └── database/
+│       ├── connection.py               # Supabase connection
+│       └── models.py                   # Database tables
 │
 ├── failsafe-frontend/
-│ ├── src/
-│ │ ├── pages/
-│ │ │ ├── Dashboard.jsx # Main dashboard
-│ │ │ └── LoginPage.jsx # Authentication
-│ │ ├── components/
-│ │ │ └── RiskChart.jsx # Pie & Bar charts
-│ │ └── App.jsx # Router setup
-│ └── package.json
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Dashboard.jsx           # Main dashboard
+│   │   │   └── LoginPage.jsx           # Authentication
+│   │   ├── components/
+│   │   │   └── RiskChart.jsx           # Pie & Bar charts
+│   │   └── App.jsx                     # Router setup
+│   └── package.json
 │
 ├── colab_notebooks/
-│ └── failsafe_model.ipynb # Model training notebook
+│   └── failsafe_model.ipynb            # Model training notebook
 │
 └── README.md
-
+```
 
 ---
 
@@ -187,27 +190,43 @@ FAILSAFE/
 ```bash
 cd failsafe-backend
 python -m venv failsafe_env
+# On Windows:
 failsafe_env\Scripts\activate
+# On macOS/Linux:
+source failsafe_env/bin/activate
+
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
-Frontend Setup
+### Frontend Setup
+```bash
 cd failsafe-frontend
 npm install
 npm run dev
+```
 
-Environment Variables (.env)
+### Environment Variables (.env)
+```
 DATABASE_URL=postgresql://user:pass@host:6543/postgres
 SECRET_KEY=your-secret-key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
 
-🎯 Goals Achieved
-Goal	Status
-Predict at-risk students using attendance, assignments & behavioral data	✅
-SHAP explanations for every prediction	✅
-Auto-generated personalised intervention plans	✅
-Faculty & HOD dashboard with risk trends	✅
+---
 
-👨‍💻 Author
+## 🎯 Goals Achieved
+
+| Goal | Status |
+|------|--------|
+| Predict at-risk students using attendance, assignments & behavioral data | ✅ |
+| SHAP explanations for every prediction | ✅ |
+| Auto-generated personalised intervention plans | ✅ |
+| Faculty & HOD dashboard with risk trends | ✅ |
+
+---
+
+## 👨‍💻 Author
+
 Built with ❤️ as part of the FAILSAFE project.
