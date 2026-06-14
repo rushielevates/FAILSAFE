@@ -20,7 +20,7 @@ FAILSAFE is a web-based system where faculty upload student data and a trained M
 
 | Component | URL |
 |-----------|-----|
-| **Frontend** | [failsafe-six.vercel.app](https://failsafe-six.vercel.app) |
+| **Frontend** | [https://failsafe-lfidiaq6d-rushielevates-projects.vercel.app/](https://failsafe-six.vercel.app) |
 | **Backend API** | [failsafe-api-wvs6.onrender.com](https://failsafe-api-wvs6.onrender.com) |
 
 ---
