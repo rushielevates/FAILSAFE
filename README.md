@@ -16,11 +16,11 @@ FAILSAFE is a web-based system where faculty upload student data and a trained M
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Demo
 
 | Component | URL |
 |-----------|-----|
-| **Frontend** | [failsafe-App](https://6a2fe966c835f33357889834--failsafecna.netlify.app) |
+| **Demo video** | [Watch how FAILSAFE works](https://drive.google.com/file/d/1GXkx1W8aPSHN_RVzRwGIpWISJLH4p1TJ/view?usp=sharing) |
 | **Backend API** | [failsafe-api-wvs6.onrender.com](https://failsafe-api-wvs6.onrender.com) |
 
 ---
